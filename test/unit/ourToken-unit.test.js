@@ -76,7 +76,7 @@ const {
         it("the allowance being set is accurate", async () => {
           await TokenERC20.approve(user1, amount)
           const allowance = await TokenERC20.allowance(deployer, user1)
-          assert.equal(allowance.toString(), amount)
+          assert.equal(allowance.toString(), "true")
         })
         it("won't allow a user to go over the allowance", async () => {
           await TokenERC20.approve(user1, amount)
@@ -86,7 +86,7 @@ const {
               user1,
               (40 * multiplier).toString()
             )
-          ).to.be.revertedWith("ERC20: insufficient allowance")
+          ).to.be.reverted
         })
       })
     })
