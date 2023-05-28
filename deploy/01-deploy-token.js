@@ -3,7 +3,8 @@ const {
   developmentChains,
   INITIAL_SUPPLY,
 } = require("../helper-hardhat-config")
-const { verify } = require("../helper-functions")
+// const { verify } = require("../helper-functions")
+const { verify } = require("../utils/verify")
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments
@@ -17,12 +18,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   })
   log(`ourToken deployed at ${ourToken.address}`)
 
-  if (
-    !developmentChains.includes(network.name) &&
-    process.env.ETHERSCAN_API_KEY
-  ) {
-    await verify(ourToken.address, [INITIAL_SUPPLY])
-  }
+  //   const args = ["OurToken", "OT", INITIAL_SUPPLY]
+  //   if (
+  //     !developmentChains.includes(network.name) &&
+  //     process.env.ETHERSCAN_API_KEY
+  //   ) {
+  //     await verify(ourToken.address, [INITIAL_SUPPLY])
+  //   }
 }
 
 module.exports.tags = ["all", "token"]
