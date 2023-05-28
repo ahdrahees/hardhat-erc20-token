@@ -1,10 +1,14 @@
-require("@nomiclabs/hardhat-waffle")
+require("@nomicfoundation/hardhat-toolbox")
 require("@nomiclabs/hardhat-etherscan")
 require("hardhat-deploy")
-require("solidity-coverage")
+// require("@nomiclabs/hardhat-waffle")
+// require("solidity-coverage")
+// require("@nomicfoundation/hardhat-chai-matchers")
 require("hardhat-gas-reporter")
 require("hardhat-contract-sizer")
 require("dotenv").config()
+require("ethers")
+require("@nomiclabs/hardhat-ethers")
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -12,7 +16,6 @@ require("dotenv").config()
 
 const MAINNET_RPC_URL =
   process.env.MAINNET_RPC_URL ||
-  process.env.ALCHEMY_MAINNET_RPC_URL ||
   "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const SEPOLIA_RPC_URL =
   process.env.SEPOLIA_RPC_URL ||
@@ -29,7 +32,7 @@ const ETHERSCAN_API_KEY =
   process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 const POLYGONSCAN_API_KEY =
   process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
-const REPORT_GAS = process.env.REPORT_GAS.toLowerCase() === "true" || false
+const REPORT_GAS = process.env.REPORT_GAS || false
 
 module.exports = {
   defaultNetwork: "hardhat",
