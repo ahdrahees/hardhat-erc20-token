@@ -1,3 +1,5 @@
+const { ethers } = require("hardhat")
+
 const networkConfig = {
   31337: {
     name: "localhost",
@@ -9,6 +11,9 @@ const networkConfig = {
   },
 }
 const INITIAL_SUPPLY = "1000000000000000000000000"
+// const INITIAL_SUPPLY = ethers.utils.parseEther("1000000.0")
+
+const INITIAL_SUPPLY_MANUAL = "1000000000" // 1B. already implemented decimal in contract
 
 const developmentChains = ["hardhat", "localhost"]
 
@@ -16,4 +21,5 @@ module.exports = {
   networkConfig,
   developmentChains,
   INITIAL_SUPPLY,
+  INITIAL_SUPPLY_MANUAL,
 }
